@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      List
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item>
+      <ion-input [(ngModel)]="articulo" type="text" placeholder="Articulo Nuevo"></ion-input>
+      <ion-button (click)="addArticulo()" expand="block">ADD</ion-button>
+    </ion-item>
+    <ng-container *ngFor="let item of list">
+      <ion-item  *ngIf="!item.isChecked">
+        <ion-label >{{item.name}}</ion-label>
+        <ion-checkbox (ionChange)="marcarArticulo(item._id)" slot="end" [(ngModel)]="item.isChecked"></ion-checkbox>
+    </ion-item>
+    </ng-container>
+  </ion-list>
+</ion-content>
